@@ -30,7 +30,7 @@ Empleado::Empleado(const std::string &nombre, int &aExp, float salarioB): nombre
 
 void Empleado::banderaRevision(bool *suerte)
 {
-	if (rand () %2 == 0)
+	if (rand () %3 == 0)
 	{
 		*suerte = true;
 	}
@@ -69,12 +69,14 @@ float Empleado::aumentarSalario(int *aExp)
 std::string Empleado::obenerReporteEmpleados()
 {
 	std::string reporte = "";
+	bool *suerteT = &suerte;
+	banderaRevision(suerteT);
 
 	reporte = reporte + "Empleado # [" + std::to_string(getId()) + "]\n\tNombre [" + getNombre() + "]\n\t"
 		+ "Años de experiencia [" + std::to_string(getAExp()) + "]\n\tSalario inicial [" + std::to_string(getSalarioB())
 		+ "]\n\tSalario acumulado [" + std::to_string(aumentarSalario(&aExp)) + "]\n\tNecesita revision [";
 
-		if (suerte == true)
+		if(*suerteT  == true)
 	{
 		 reporte = reporte + "Si";
 	}
